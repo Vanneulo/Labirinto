@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <conio.h>
-#include<ctype.h>
+#include <conio.h> //Para o uso do getch()
+#include<ctype.h> //Para transformar o comando do usuario em maiusculo
+#include<time.h> //Para pegar numeros aleatorios
+#include <windows.h>//Inclui Beep.
+
 
 //Struct definido as caracteristicas das salas. Typedef serve para definir a struct como uma variavel, assim evita colocar struct toda a hora.
 typedef struct Sala
@@ -64,18 +67,59 @@ int verificarChavesColetadas(int chaves[], int tamanho)
     return 1;
 }
 
+//Exibe o Menu
 char exibirMenu()
 {
     char escolha;
-    printf("Menu:\n");
+    printf("- GOBIDARST -\n\n");
     printf("1. Iniciar Jogo\n");
     printf("2. Reiniciar Jogo\n");
-    printf("3. Sair\n");
+    printf("3. Sair\n\n");
     printf("Escolha uma opcao: ");
     scanf(" %c", &escolha);
     return escolha;
 }
 
+// Função que retorna um número aleatório entre min e max (inclusive)
+int numeroAleatorioEntre(int min, int max) 
+{
+    return (rand() % (max - min + 1)) + min; //rand() % (max - min + 1) gera um número entre 0 e (max - min). + min ajusta o intervalo para estar entre min e max.
+}
+
+//Som de chave sendo pega.
+void somChave() 
+{
+    Beep(500, 100);
+    Sleep(100);     
+    Beep(600, 100); 
+    Sleep(100);     
+    Beep(700, 100); 
+}
+
+//Som Final Verdadeiro
+void somFinal() 
+{
+    Beep(880, 200);
+    Sleep(100);
+    Beep(1100, 200);
+    Sleep(100);
+    Beep(1320, 200);
+    Sleep(100);
+    Beep(1760, 200);
+    Sleep(100);
+    Beep(2200, 200);
+}
+
+//Som coração
+void somCoracao(int pausa, int repeticao) 
+{
+	for(int i = 0; i < repeticao; i++)
+	{
+		Beep(100, 100);
+		Beep(100, 100);
+		Sleep(pausa);
+	}
+}
 
 int main() 
 {	
@@ -95,7 +139,7 @@ int main()
 	salas[6] = criarSala("Voce entra pelo tunel do animal. \nEh dificil se movimentar aqui, mas voce consegue avancar, descendo mais e mais pelo tunel.\nO cheiro dentro do tunel eh insuportavel, como se diversos restos de animais estivessem apodrecendo lentamente.\nVoce escuta um gotejamento estranho e constante, e tal liquido escorre pelo seu pescoco.\nVoce pode seguir pelo tunel em direcao ao OESTE.\nOu voce pode voltar pelo caminho que veio pelo NORTE.", 0);
 	salas[7] = criarSala("Voce decide continuar seguindo pelo tunel.\nO caminho esta bloqueado pelo que parecem ser teias de aranha grossas, e a cada passo fica mais dificil de se movimentar. Ate que de repente voce escuta o que parecem ser ALGO se movimentando pelas paredes do grande tunel. \nMas ao andar alguns passos, voce finalmente encontra uma luz pelo que parece ser uma pequena saida.\nVoce pode sair pelo buraco ao OESTE e nao voltar.\n Ou retornar pelo tunel da criatura ao LESTE.", 0);
 	salas[8] = criarSala("Voce chega ao que parece ser uma enorme e ameacadora catedral com um estilo gotico.\nEsta nao eh uma catedral comum, mas um monolito de pedra e trevas, um testemunho silencioso de uma era perdida.\nVoce pode adentrar a catedral pelo OESTE.\nIr para o centro da cidade pelo LESTE.\nOu seguir ate a muralha pelo SUL.", 0);
-	salas[9] = criarSala("Voce entra na catedral abandonada.\nO som de gotas d'agua ecoa pelo vasto espaço e a sensacao de solidao agora parecia mais evidente. \nUma enorme estatua da mesma criatura que a do portal abraca um RELOGIO sinistro com suas multiplas patas em cima de um altar onde pareciam ocorrer sacrificios.\nAo analisar a estatua, voce agora consegue identificar que tal criatura parecia possuir a cabeca de um animal semelhante a um bode ou carneiro.\nSeus olhos eram sem vida e ameacadores, como os de uma aranha. \nVoce olha pelo salao, ve varios bancos vazios e diversos simbolos os quais voce nao reconhece escritos nas paredes. \nDe repente um som estrondoroso ecoa pelo salao. Sua atencao retorna ao RELOGIO e voce percebe que o ponteiro comeca a se mover lentamente em direcao ao numero '37' manchado de vermelho. Algo nao parecia certo.\nVoce pode seguir uma porta para o que parece ser o patio pelo OESTE.\nSair da catedral pelo LESTE.\nOu entrar por uma porta atras do altar pelo NORTE.", 0);
+	salas[9] = criarSala("Voce entra na catedral abandonada.\nO som de gotas d'agua ecoa pelo vasto espaço e a sensacao de solidao agora parecia mais evidente. \nUma enorme estatua da mesma criatura que a do portal abraca um RELOGIO sinistro com suas multiplas patas em cima de um altar onde pareciam ocorrer sacrificios.\nAo analisar a estatua, voce agora consegue identificar que tal criatura parecia possuir a cabeca de um animal semelhante a um bode ou carneiro.\nSeus olhos eram sem vida e ameacadores, como os de uma aranha. \nVoce olha pelo salao, ve varios bancos vazios e diversos simbolos os quais voce nao reconhece escritos nas paredes. \nDe repente um som estrondoroso ecoa pelo salao. Sua atencao retorna ao RELOGIO e voce percebe que o ponteiro comeca a se mover lentamente em direcao ao numero '50' manchado de vermelho. Algo naquele NUMERO lhe chama a atencao.\nVoce pode seguir uma porta para o que parece ser o patio pelo OESTE.\nSair da catedral pelo LESTE.\nOu entrar por uma porta atras do altar pelo NORTE.", 0);
 	salas[10] = criarSala("Voce entra em uma biblioteca antiga.\nOs livros estao empoeirados e gastos, com excessao de um livro cujo a cor negra como a noite esta disposta em uma mesa no centro da sala.\nHa uma CHAVE em formato de um Querubim em cima do livro aberto, a qual voce imediatamente pega. Voce pode ler uma frase em destaque no livro:\n'GOBIDARST o Puro! GOBIDARST o Justo! GOBIDARST o Soberano! Devemos nossa vida a Ele e somente Ele!'\nVoce pode somente sair da biblioteca pelo SUL.", 1);
 	salas[11] = criarSala("Voce entra pela porta atras do altar. O corredor eh iluminado somente com tochas com fogo azul\nDiversas estatuas humanas em poses como estivessem chorando guiam voce a uma porta adornada no fim do corredor.\nVoce pode entrar na porta adornada pelo NORTE.\nOu voce pode voltar ate a catedral pelo SUL.", 0);
 	salas[12] = criarSala("Voce entra em um grande patio onde pareciam ser realizadas as meditacoes dos monges da catedral.\nO campo eh incrivelmente bem cuidado e passa uma estranha sensacao de paz e tranquilidade.\nMas tal tranquilidade eh cortada com um vulto se escondendo nos telhados. Voce decide seguir.\nVoce pode ir para a entrada do Mosteiro pelo SUL\nOu voltar para a catedral pelo LESTE.", 0);
@@ -121,7 +165,7 @@ int main()
 	salas[32] = criarSala("Voce esta em uma sala redonda. \nO chao possui um vidro que projeta uma luz carmesim no teto, revelando uma imagem de pessoas sofrendo em um purgatorio eterno comandandado por uma criatura de varias pernas.\nVoce sente que o seu destino pode ser decidido com a proxima escolha:\nVoce pode seguir pelo NORTE, adentrando uma enorme porta adornada com a mesma criatura vista diversas vezes.\nOu entrar em uma fresta preenchida com um liquido negro na parede pelo SUL, a qual parece nao ter mais volta.", 0);
 	salas[33] = criarSala("Voce entra no que parece ser uma toca de aranha gigante. Um calafrio te domina, e voce fica enojado com o ambiente. \nO cheiro podre, por conta da quantidade enorme de cadaveres, permeia a sala, o que torna dificil de respirar.\nVoce ve diversos casulos pendurados em toda a sala envoltos pela mesma gosma negra vista anteriormente. Os casulos parecem se mecher.\nAo fundo voce enxerga uma porta com ENTRADAS PARA CHAVES, cujo o acesso parece ter sido propositalmente protegido com a quantidade enorme de teias.", 0);
 	salas[34] = criarSala("Voce adentra uma caverna enorme, com diversos ossos humanos espalhados pelo chao e paredes.\nO cheiro eh horrendo. Ha diversos buracos no teto, que escorrem um liquido negro viscoso.\nParece que eh aqui que a criatura se alimenta...\nEu posso seguir pela caverna pelo NORTE.\nOu sair dela pelo SUL.", 0);
-	salas[35] = criarSala("", 0);
+	salas[35] = criarSala("A atmosfera muda drasticamente ao entrar mais afundo na gruta.\n O som parece ser absorvido pelas paredes de pedra, criando um silencio opressivo que ecoa em sua alma.\nVoce pode ir para o OESTE", 0);
 	salas[36] = criarSala("", 0);
 	salas[37] = criarSala("", 0);
 	salas[38] = criarSala("", 0);
@@ -247,10 +291,12 @@ int main()
 				{
 		            if (verificarChavesColetadas(chaves, 6) == 1)  //Condicao para o final verdadeiro do jogo.
 					{
+						somFinal();
 		                printf("Voce conquistou o final 'Enviado de Deus'!\nObrigado por Jogar!");
 		            } 
 					else 
 					{
+						Beep(500, 1000);
 		                printf("Voce sente uma presenca atras de voce, a imponencia de tal te faz ficar paralisado.\nA sua ultima memoria eh ser abracado por diversas maos humanas e pilhas de dentes se fechando em seu pescoco.\nVoce conquistou o final 'Abrace o Submundo'.\Tente achar todas as chaves e conquistar o final verdadeiro!");
 		            }
 		            
@@ -263,9 +309,39 @@ int main()
 		            break;
 		        }
 		        
-		        if(passos == 6)
+		        //Eventos do Monstro Maligno das Trevas Trevosas
+		        if(movimentos == numeroAleatorioEntre(1, 10))
 		        {
-		        	printf("Voce morreu.");
+		        	somCoracao(1000, 4);
+		        	printf("Voce sente ser observado...\nAo olhar para o LESTE, voce jura ter visto um vulto passar por voce rapidamente.\n");
+				}
+				if(movimentos == numeroAleatorioEntre(11, 20))
+		        {
+		        	somCoracao(900, 6);
+		        	printf("Voce escuta algo se aproximando por tras de voce...\n Ao olhar para o tras, voce somente ve diversas pegadas parecidas indo em direcao ao OESTE.\n");
+				}
+				if(movimentos == numeroAleatorioEntre(21, 30))
+		        {
+		        	somCoracao(800, 8);
+		        	printf("Voce sente uma gota morna cair em sua testa...\n Ao olhar para o cima, voce ve uma enorme goteira de um liquido negro escorrer do teto em direcao ao SUL.\n Parecia recente.\n");
+				}
+				if(movimentos == numeroAleatorioEntre(31, 40))
+		        {
+		        	somCoracao(700, 10);
+		        	printf("Voce sente uma respiracao pesada em seu pescoco...\n Ao se virar,E voce enxerga uma cabeca de carneiro te observando de um canto escuro ao NORTE.\n");
+				}
+				if(movimentos == numeroAleatorioEntre(41, 50))
+		        {
+		        	somCoracao(0, 20);
+		        	printf("Voce escuta um grunhido alto vindo do OESTE...\nAo se virar para a origem do ruido, uma aranha gigante com cabeca de carneiro, olhos escuros e patas que pareciam bracos humanos fica te encarando por longos segundos.\nEla abre um longo sorriso antes de sair correndo de volta de onde veio.\n");
+				}
+		        if(movimentos == numeroAleatorioEntre(51, 60))
+		        {
+		        	Beep(500, 1000);
+		        	printf("Voce escuta sinos tocando da direcao da CATEDRAL...\nDe repente o ar fica gelado, suas maos imediatamente ficam tremulas...\nVoce sente algo encostar em suas costas, como se fossem pelos. Voce olha pra cima e ve dois grandes olhos negros te encarando.\n Sua ultima memoria eh ser envolto de teias de aranha e seus pulmoes sendo preenchidos com um liquido negro.\nFim de jogo.");
+		        	salaAtual = salas[0]; //Define a sala atual como 0 novamente.
+            		memset(chaves, 0, sizeof(chaves)); //memset é uma função que preenche um bloco de memória com um valor especifico: No caso pega o inicio do vetor chave, e posiciona com o valor 0 todas as casas do mesmo pegando seu tamanho.
+            		movimentos = 0; //Reseta os movimentos.
 		        	getch();
 		        	break;
 				}
@@ -273,31 +349,37 @@ int main()
 		        //Salas com chaves:
 		        if (salaAtual == salas[10]) 
 				{
+					somChave();
 		            chaves[0] = 1;//Adiciona uma chave no vetor chave.
 		            printf("Voce coletou a chave Querubim.\n");
 		        } 
 				if (salaAtual == salas[18]) 
 				{
+					somChave();
 		            chaves[1] = 1;
 		            printf("-> Voce coletou a chave Serafim.\n");
 		        }
 				if (salaAtual == salas[27]) 
 				{ 
+					somChave();
 		            chaves[2] = 1;
 		            printf("-> Voce coletou a chave Anjo.\n");
 		        }
 				if (salaAtual == salas[39]) 
 				{
+					somChave();
 		            chaves[3] = 1;
 		            printf("-> Voce coletou a chave Trono.\n");
 		        }
 				if (salaAtual == salas[42]) 
 				{ 
+					somChave();
 		            chaves[4] = 1;
 		            printf("-> Voce coletou a chave Principado.\n");
 		        }
 				if (salaAtual == salas[41]) 
 				{ 
+					somChave();
 		            chaves[5] = 1;
 		            printf("-> Voce coletou a chave Arcanjo.\n");
 		        }
@@ -321,11 +403,11 @@ int main()
 				//Validar movimentacao
 		        int movimentoValido = 1;
 		        
-		        if (strcmp(comando, "N") == 0)
+		        if (strcmp(comando, "N") == 0) //String Compare compara duas strings, se ambas forem iguais, retorna 0.
 				{
 		            if (salaAtual->norte != NULL) {
-		                salaAtual = salaAtual->norte;
-		                passos++;
+		                salaAtual = salaAtual->norte; //Define a sala atual como a sala "ao norte" da mesma, definido anteriormente.
+		                movimentos++; //Aumenta o numero de movimentos.
 		            } 
 					else 
 					{
@@ -337,7 +419,7 @@ int main()
 		            if (salaAtual->sul != NULL) 
 					{
 		                salaAtual = salaAtual->sul;
-		                passos++;
+		                movimentos++;
 		            } 
 					else 
 					{
@@ -349,7 +431,7 @@ int main()
 		            if (salaAtual->leste != NULL) 
 					{
 		                salaAtual = salaAtual->leste;
-		                passos++;
+		                movimentos++;
 		            } 
 					else 
 					{
@@ -361,7 +443,7 @@ int main()
 		            if (salaAtual->oeste != NULL) 
 					{
 		                salaAtual = salaAtual->oeste;
-		                passos++;
+		                movimentos++;
 		            } 
 					else 
 					{
@@ -385,18 +467,19 @@ int main()
 		else if (escolha == '2') // Reiniciar Jogo
         {
         	printf("Saindo do jogo...\n");
-			salaAtual = salas[0];
-            memset(chaves, 0, sizeof(chaves));
-            getch();
+			salaAtual = salas[0]; //Define a sala atual como 0 novamente.
+            memset(chaves, 0, sizeof(chaves)); //Reseta as chaves.
+            movimentos = 0; //Reseta os movimentos.
+			getch();
         }
-        else if (escolha == '3') // Sair
+        else if (escolha == '3') // Sair do jogo
         {
             printf("Saindo do jogo...\n");
             break;
         }
         else
         {
-            printf("Opção inválida. Tente novamente.\n");
+            printf("Opcao invalida. Tente novamente.\n");
         }
     }
     return 0;
