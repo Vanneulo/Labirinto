@@ -273,7 +273,6 @@ int main()
 	conectarSalas(salas[41], salas[33], 'S');
 	
 	Sala *salaAtual = salas[0];
-	int passos = 0;
 	
 	while (1)
     {
@@ -292,12 +291,12 @@ int main()
 		            if (verificarChavesColetadas(chaves, 6) == 1)  //Condicao para o final verdadeiro do jogo.
 					{
 						somFinal();
-		                printf("Voce conquistou o final 'Enviado de Deus'!\nObrigado por Jogar!");
+		                printf("\nVoce sente uma presenca atras de voce, uma luz radiante e acolhedora.\n Com as seis chaves em maos, voce as insere nas fechaduras do portal diante de voce.\n Uma intensa luz dourada emana do portal, iluminando as terras ao redor e dissipando todas as trevas.\nSua ultima memoria e de uma paz profunda enquanto voce atravessa o portal, libertando a luz nas terras sombrias.\nVoce conquistou o final 'Enviado de Deus'!\nObrigado por Jogar!");
 		            } 
 					else 
 					{
 						Beep(500, 1000);
-		                printf("Voce sente uma presenca atras de voce, a imponencia de tal te faz ficar paralisado.\nA sua ultima memoria eh ser abracado por diversas maos humanas e pilhas de dentes se fechando em seu pescoco.\nVoce conquistou o final 'Abrace o Submundo'.\Tente achar todas as chaves e conquistar o final verdadeiro!");
+		                printf("\nVoce sente uma presenca atras de voce, a imponencia de tal te faz ficar paralisado.\nA sua ultima memoria eh ser abracado por diversas maos humanas e pilhas de dentes se fechando em seu pescoco.\nVoce conquistou o final 'Abrace o Submundo'.\Tente achar todas as chaves e conquistar o final verdadeiro!");
 		            }
 		            
 		            salaAtual = salas[0]; //Define a sala atual como 0 novamente.
@@ -464,7 +463,7 @@ int main()
 		
 		else if (escolha == '2') // Reiniciar Jogo
         {
-        	printf("Saindo do jogo...\n");
+        	printf("Reiniciando o jogo...\n");
 			salaAtual = salas[0]; //Define a sala atual como 0 novamente.
             memset(chaves, 0, sizeof(chaves)); //Reseta as chaves.
             movimentos = 0; //Reseta os movimentos.
