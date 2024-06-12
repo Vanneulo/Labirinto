@@ -121,6 +121,7 @@ int main()
 	salas[32] = criarSala("Voce esta em uma sala redonda. \nO chao possui um vidro que projeta uma luz carmesim no teto, revelando uma imagem de pessoas sofrendo em um purgatorio eterno comandandado por uma criatura de varias pernas.\nVoce sente que o seu destino pode ser decidido com a proxima escolha:\nVoce pode seguir pelo NORTE, adentrando uma enorme porta adornada com a mesma criatura vista diversas vezes.\nOu entrar em uma fresta preenchida com um liquido negro na parede pelo SUL, a qual parece nao ter mais volta.", 0);
 	salas[33] = criarSala("Voce entra no que parece ser uma toca de aranha gigante. Um calafrio te domina, e voce fica enojado com o ambiente. \nO cheiro podre, por conta da quantidade enorme de cadaveres, permeia a sala, o que torna dificil de respirar.\nVoce ve diversos casulos pendurados em toda a sala envoltos pela mesma gosma negra vista anteriormente. Os casulos parecem se mecher.\nAo fundo voce enxerga uma porta com ENTRADAS PARA CHAVES, cujo o acesso parece ter sido propositalmente protegido com a quantidade enorme de teias.", 0);
 	salas[34] = criarSala("Voce adentra uma caverna enorme, com diversos ossos humanos espalhados pelo chao e paredes.\nO cheiro eh horrendo. Ha diversos buracos no teto, que escorrem um liquido negro viscoso.\nParece que eh aqui que a criatura se alimenta...\nEu posso seguir pela caverna pelo NORTE.\nOu sair dela pelo SUL.", 0);
+<<<<<<< Updated upstream
 	salas[35] = criarSala("", 0);
 	salas[36] = criarSala("", 0);
 	salas[37] = criarSala("", 0);
@@ -128,6 +129,15 @@ int main()
 	salas[39] = criarSala("", 1);
 	salas[40] = criarSala("", 0);
 	salas[41] = criarSala("", 1);
+=======
+	salas[35] = criarSala("Voce adentra a caverna e imediatamente eh envolvido por uma atmosfera sombria e opressiva.\n O chao rochoso esta marcado por inumeras garras, algumas tao profundas que quase atravessam a pedra. \nSimbolos arcanos adornam as paredes, contando a historia de batalhas antigas travadas neste lugar entre uma criatura e os exercitos celestiais.\nVoce pode voltar para a toca da criatura pelo SUL.\nSeguir o som de agua pelo LESTE\nOu seguir flores brancas pelo OESTE.", 0);
+	salas[36] = criarSala("A beira de um lago profundo, voce avista estatuas de anjos Tronos que foram derrotados pela criatura.\n As aguas do lago guardam segredos sombrios e memorias dolorosas dos que foram vencidos.\n Voce ve uma passagem pela agua pelo LESTE, mas sem certeza de retorno\n Ou voce pode voltar para a caverna com simbolos pelo OESTE.", 0);
+	salas[37] = criarSala("Neste espaço sombrio, flores palidas crescem em meio a escuridão.\nAs petalas brancas das flores parecem tingidas de tristeza, simbolizando os anjos que caíram diante do poder de criatura. \nVoce pode seguir uma luz pelo NORTE \nOu ir para o campo de batalha pelo LESTE.", 0);
+	salas[38] = criarSala("Voce entra em um vale onde estatuas dos principados olham para o ceu, como se aguardassem por redencao ou por um sinal de seus lideres celestiais.\nEste lugar é um testemunho silencioso da queda dos príncipes celestiais que um dia protegeram estas terras, agora abandonadas a escuridao.\nVoce pode ir ao vale de flores pelo SUL\nOu voce pode seguir um hino suave ao OESTE.", 0);
+	salas[39] = criarSala("Depois de nadar por uma passagem subaquatica estreita e fria, você emerge em uma câmara vasta e sombria.\nA agua goteja das paredes rochosas, criando um som constante e hipnotico que ecoa por todo o ambiente. \nNo centro da sala, sobre um pedestal de pedra envelhecida e coberta de musgo, esta uma chave com o formato de um anjo Trono a qual voce imediatamente pega. \nA chave emana uma aura sutil de luz, contrastando com a escuridão ao redor.\nAo olhar para as paredes, voce consegue ler escritas em hebraico contando a respeito da vinda dos anjos a Gileade e sucumbindo para a escuridao absoluta de GOBIDARST.\nVoce pode voltar pelo tunel sub-aquatico pelo OESTE.", 1);
+	salas[40] = criarSala("Seguindo um hino suave, voce adentra um corredor.\nVoce eh envolvido pelos ecos dos hinos angelicais que ainda ressoam pelas paredes.\nCada passo reverbera como uma homenagem a glória que uma vez preencheu estas terras, agora silenciadas por uma presença opressiva.\n\nA medida que avança, voce se depara com uma bifurcação no caminho. Os ecos dos hinos tornam-se mais intensos, quase ensurdecedores, dificultando a tomada de decisao.\nVoce deve se seguir pelo instinto: SUL ou OESTE.", 0);
+	salas[41] = criarSala("Voce adentra um salao redondo completamente iluminado.\nVoce olha para o teto e enxerga uma pintura de um ceu azul com diversos tipos de anjos voando.\nNo centro da sala voce encontra uma chave em formato de Arcanjo, a qual voce imediatamente pega.\n Ha uma porta gigantesca com a seginte frase no topo: 'NAO TENHA MEDO'.\Voce pode adentrar a porta pelo SUL.\nOu voltar por onde veio pelo LESTE.", 1);
+>>>>>>> Stashed changes
 	salas[42] = criarSala("Ao entrar na galeria, o ar frio e estagnado te envolve, um sussurro de misterios antigos.\nAs pinturas que adornam as paredes sao homenagens macabras a entidade que uma vez governou este lugar. \nCada tela eh um portal para uma visao perturbadora, onde anjos caidos veneram a criatura disfarcada, suas asas quebradas formando um coro sombrio ao redor do falso sacerdote.\nNo centro da sala consegue se ver uma chave em formato de um anjo Principado, a qual voce coleta.", 1);
 	
 	//Conexões entre as salas
@@ -247,18 +257,28 @@ int main()
 				{
 		            if (verificarChavesColetadas(chaves, 6) == 1)  //Condicao para o final verdadeiro do jogo.
 					{
+<<<<<<< Updated upstream
 		                printf("Voce conquistou o final 'Enviado de Deus'!\nObrigado por Jogar!");
 		            } 
 					else 
 					{
 		                printf("Voce sente uma presenca atras de voce, a imponencia de tal te faz ficar paralisado.\nA sua ultima memoria eh ser abracado por diversas maos humanas e pilhas de dentes se fechando em seu pescoco.\nVoce conquistou o final 'Abrace o Submundo'.\Tente achar todas as chaves e conquistar o final verdadeiro!");
+=======
+						somFinal();
+		                printf("\nVoce sente uma presenca atras de voce, uma luz radiante e acolhedora. \nCom as seis chaves em maos, voce as insere nas fechaduras do portal diante de voce. \nUma intensa luz dourada emana do portal, iluminando as terras ao redor e dissipando todas as trevas. \nSua ultima memoria eh de uma paz profunda enquanto voce atravessa o portal, libertando a luz nas terras sombrias.\nVoce conquistou o final 'Enviado de Deus'!\nObrigado por Jogar!");
+		            }
+					else 
+					{
+						Beep(500, 1000);
+		                printf("\nVoce sente uma presenca atras de voce, a imponencia de tal te faz ficar paralisado.\nA sua ultima memoria eh ser abracado por diversas maos humanas e pilhas de dentes se fechando em seu pescoco.\nVoce conquistou o final 'Abrace o Submundo'.\Tente achar todas as chaves e conquistar o final verdadeiro!");
+>>>>>>> Stashed changes
 		            }
 		            
-		            //Libera o uso das salas na memoria.
-		    		for (int i = 0; i < 42; i++) 
-					{
-		       	 		free(salas[i]);
-		    		}
+		    		salaAtual = salas[0]; //Define a sala atual como 0 novamente.
+            		memset(chaves, 0, sizeof(chaves)); //Reseta as chaves.
+            		movimentos = 0; //Reseta os movimentos
+		    		
+		    		
 		    		getch();
 		            break;
 		        }
@@ -384,14 +404,27 @@ int main()
 		
 		else if (escolha == '2') // Reiniciar Jogo
         {
+<<<<<<< Updated upstream
         	printf("Saindo do jogo...\n");
 			salaAtual = salas[0];
             memset(chaves, 0, sizeof(chaves));
             getch();
+=======
+        	printf("Reiniciando o jogo...\n");
+			salaAtual = salas[0]; //Define a sala atual como 0 novamente.
+            memset(chaves, 0, sizeof(chaves)); //Reseta as chaves.
+            movimentos = 0; //Reseta os movimentos.
+			getch();
+>>>>>>> Stashed changes
         }
         else if (escolha == '3') // Sair
         {
-            printf("Saindo do jogo...\n");
+            printf("Saindo do Jogo...\n");
+            //Libera o uso das salas na memoria.
+		   	for (int i = 0; i < 42; i++) 
+			{
+		       	free(salas[i]);
+		    }
             break;
         }
         else
